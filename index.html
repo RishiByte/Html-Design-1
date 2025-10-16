@@ -4,20 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Frontend Mentor | Social links profile</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-
-    *{
+    * {
       font-family: "Inter", sans-serif;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     body {
       background-color: hsl(0, 0%, 8%);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .sub-container {
@@ -27,13 +32,8 @@
       align-items: center;
       width: 30%;
       border-radius: 15px;
-    }
-
-    .container{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      position: relative;
     }
 
     img {
@@ -41,7 +41,6 @@
       width: 100px;
       height: 100px;
       margin-top: 40px;
-      
     }
 
     h1 {
@@ -51,61 +50,123 @@
 
     #location {
       color: hsl(75, 94%, 57%);
-      
     }
-    #Yo{
+
+    #Yo {
       color: grey;
     }
+
     p {
       color: white;
     }
 
-    .links{
+    .links {
       margin-bottom: 20px;
-      /* border: solid 1px red; */
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .buttons{
+    .buttons {
       background-color: hsl(0, 0%, 20%);
       margin: 13px 0;
       padding: 15px 80px;
       border-radius: 10px;
       text-align: center;
       color: white;
-
+      width: 70%;
     }
 
-    .buttons:hover{
+    .buttons:hover {
       background-color: hsl(75, 94%, 57%);
       color: black;
       cursor: pointer;
+    }
+
+    /* 🌙 Toggle Button */
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: hsl(0, 0%, 20%);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background-color: hsl(75, 94%, 57%);
+      color: black;
+    }
+
+    /* 🌞 Light Mode Styles */
+    body.light {
+      background-color: hsl(0, 0%, 95%);
+    }
+
+    body.light .sub-container {
+      background-color: hsl(0, 0%, 100%);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    body.light h1,
+    body.light p {
+      color: black;
+    }
+
+    body.light #Yo {
+      color: rgb(100, 100, 100);
+    }
+
+    body.light .buttons {
+      background-color: hsl(0, 0%, 90%);
+      color: black;
+    }
+
+    body.light .buttons:hover {
+      background-color: hsl(75, 94%, 57%);
+      color: black;
+    }
+
+    body.light .toggle-btn {
+      background-color: hsl(0, 0%, 85%);
+      color: black;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-
     <div class="sub-container">
+      <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark</button>
       <img src="./assets/images/avatar-jessica.jpeg" alt="Jessica Randall">
-
-
       <h1>Jessica Randall</h1>
       <p id="location">London, United Kingdom</p>
       <p id="Yo">"Front-end developer and avid reader."</p>
 
-
-
       <div class="links">
-        <div class = "buttons">GitHub</div>
-        <div class = "buttons">Frontend Mentor</div>
-        <div class = "buttons">LinkedIn</div>
-        <div class = "buttons">Twitter</div>
-        <div class = "buttons">Instagram</div>
+        <div class="buttons">GitHub</div>
+        <div class="buttons">Frontend Mentor</div>
+        <div class="buttons">LinkedIn</div>
+        <div class="buttons">Twitter</div>
+        <div class="buttons">Instagram</div>
       </div>
-
     </div>
   </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.toggle-btn');
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggleBtn.textContent = isLight ? '🌞 Light' : '🌙 Dark';
+    }
+  </script>
 </body>
 
 </html>
